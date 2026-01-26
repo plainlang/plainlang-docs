@@ -54,10 +54,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: '',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: '***plain logo',
+        src: 'img/plain_green.svg',
       },
       items: [
         {
