@@ -10,41 +10,43 @@ This ambiguity is largely tolerable when specifications serve only as informal d
 
 In spec-driven development, ambiguity first needs to be detected — either through automated detection or by a developer noticing that the software is not behaving as intended. Once identified, the developer can respond either by strengthening the specification itself or by explicitly handling special cases where ambiguity arises[^1].
 
-This whitepaper focuses on the first approach \- strengthening the specification itself \- by introducing a new syntactic feature of the \*\*\*plain specification language: the :Concept: notation. Its purpose is to help developers refine their specifications in ways that reduce the risk of misinterpretation when the specifications are reviewed by human developers or used by AI to fully automatically generate software code. But before describing this new syntactic feature in detail, we take a step back and examine the inherent ambiguity of natural language that makes such a construct necessary, using the English word “task” as an example.
+This whitepaper focuses on the first approach \- strengthening the specification itself \- by introducing a new syntactic feature of the \*\*\*plain specification language: the :Concept: notation. Its purpose is to help developers refine their specifications in ways that reduce the risk of misinterpretation when the specifications are reviewed by human developers or used by AI to fully automatically generate software code. But before describing this new syntactic feature in detail, we take a step back and examine the inherent ambiguity of natural language that makes such a construct necessary, using the English word “*task*” as an example.
 
 ## The Illusion of Singular Meaning
 
-In English, the word “task” is commonly defined as a piece of work to be done. At first glance, this definition seems simple and precise. Yet, despite this apparent singular meaning, the word “task” is used in a surprisingly wide variety of ways, depending on who performs it and on the nature of the work involved.
+In English, the word “*task*” is commonly defined as a piece of work to be done. At first glance, this definition seems simple and precise. Yet, despite this apparent singular meaning, the word “*task*” is used in a surprisingly wide variety of ways, depending on who performs it and on the nature of the work involved.
 
 * My main **task** today is finishing the presentation.  
 * Managing customer complaints is part of her **task**.  
 * The system can run multiple **tasks** at the same time.  
 * Building trust is not an easy **task**.
 
-Although the same word appears in each sentence, it does not carry exactly the same meaning in all cases. We can make this polysemy visible by replacing the word “task” with another word that better preserves the intended meaning in each context:
+Although the same word appears in each sentence, it does not carry exactly the same meaning in all cases. We can make this polysemy visible by replacing the word “*task*” with another word that better preserves the intended meaning in each context:
 
 * My main **job** today is finishing the presentation.  
 * Managing customer complaints is part of her **responsibility**.  
 * The system can run multiple **processes** at the same time.  
 * Building trust is not an easy **undertaking**.
 
-These substitutions show that the word “task” functions as a flexible, context-dependent concept rather than a single, fixed unit of meaning. Depending on the situation, it can refer to a duty, a role, a technical operation, or a broader challenge \- distinct ideas that happen to share the same linguistic label.
+These substitutions show that the word “*task*” functions as a flexible, context-dependent concept rather than a single, fixed unit of meaning. Depending on the situation, it can refer to a duty, a role, a technical operation, or a broader challenge \- distinct ideas that happen to share the same linguistic label.
 
 Let’s now imagine that a developer using \*\*\*plain writes the following specs without any additional context:
 
-“Write a task manager app.”
+```plainlang
+Write a task manager app.
+```
 
 When used to generate software code, the \*\*\*plain renderer will most likely interpret this specification as follows:
 
-“Write a task manager app for an individual user that organizes concrete to-do items. Tasks should have priorities, deadlines, and a clear done/not-done state.”
+*“Write a task manager app for an individual user that organizes concrete to-do items. Tasks should have priorities, deadlines, and a clear done/not-done state.”*
 
 But the \*\*\*plain renderer is using large language models (LLMs) on the backend which are probabilistic in nature. It is therefore entirely possible that an LLM will understand the instruction in one of the following alternative ways:
 
-“Write a task manager app that treats tasks as responsibilities assigned to people or roles. Tasks may be ongoing areas of accountability rather than single actions.”
+*“Write a task manager app that treats tasks as responsibilities assigned to people or roles. Tasks may be ongoing areas of accountability rather than single actions.”*
 
-“Write a task manager app that manages tasks as executable system processes. Tasks should be schedulable, observable, and capable of running concurrently.”
+*“Write a task manager app that manages tasks as executable system processes. Tasks should be schedulable, observable, and capable of running concurrently.”*
 
-“Write a task manager app for managing complex, long-term undertakings. Tasks should represent goals that evolve over time and consist of multiple efforts or milestones.”
+*“Write a task manager app for managing complex, long-term undertakings. Tasks should represent goals that evolve over time and consist of multiple efforts or milestones.”*
 
 What is striking here is that a large part of the specification’s meaning hinges on a single word. Although the sentence is short, one term carries most of the interpretive load, determining not just behavior but the entire nature of the system being built.
 
@@ -58,27 +60,35 @@ If ambiguity in natural language is unavoidable, then specifications need a way 
 
 ## Fixing Meaning in Specifications with :Concept: Notation 
 
-Let’s say that the developer realizes, either on their own or with the help of a tool, that the word “task” has multiple interpretations in a given context and wants to make their intended meaning explicit in the specifications. One option is to disambiguate every occurrence of the word in its specific context, as we did above for the different interpretations of the task manager app. However, if the specifications are long and the word is used frequently, this approach quickly becomes cumbersome.
+Let’s say that the developer realizes, either on their own or with the help of a tool, that the word “*task*” has multiple interpretations in a given context and wants to make their intended meaning explicit in the specifications. One option is to disambiguate every occurrence of the word in its specific context, as we did above for the different interpretations of the task manager app. However, if the specifications are long and the word is used frequently, this approach quickly becomes cumbersome.
 
-A more scalable approach is to provide an explicit definition once and reuse it consistently throughout the specifications. For example, we could define the word “task” as follows:
+A more scalable approach is to provide an explicit definition once and reuse it consistently throughout the specifications. For example, we could define the word “*task*” as follows:
 
-\- Task describes an activity that needs to be done by the user.
+```plainlang
+- **Task** describes an activity that needs to be done by the user.
+```
 
 With this definition in place, the specification strongly indicates that the developer’s intention is to describe a personal productivity application rather than a system for managing responsibilities, computational processes, or long-term undertakings.
 
 But now imagine a longer specification containing dozens of words that may require disambiguation. How would the developer know which words have already been explicitly defined and which still have the potential for misinterpretation? In text written for humans, a common way to draw attention to key concepts is to capitalize and bold them (see figure 1 for an example from a Domain-Driven Design book). Applied to our example, this approach would look like the following:
 
-\- **Task** describes an activity that needs to be done by the user.
+```plainlang
+- **Task** describes an activity that needs to be done by the user.
 
-“Write an app for managing **Tasks**.”
+Write an app for managing **Tasks**.
+```
 
 When reviewing the specification, the developer may then notice that the word “app” is another term whose meaning is not yet explicit and could therefore be misinterpreted. For example, the \*\*\*plain renderer might assume that the developer intends a web or mobile application, while the developer is actually aiming for a console application written in Python. To avoid this ambiguity, the developer can make the intended meaning explicit by providing a definition:
 
-\- **App** is a Python console application.
+```plainlang
+- **App** is a Python console application.
+```
 
 The functional specification can then be updated accordingly:
 
-“Write an **App** for managing **Tasks**.”
+```plainlang
+Write an **App** for managing **Tasks**.
+```
 
 \*\*\*plain specifications are ASCII files and therefore have no intrinsic notion of semantic emphasis such as bold or italics. At the same time, \*\*\*plain adopts Markdown conventions for readability, where bold text \- indicated using \*\* \- serves purely as a visual cue for human readers. Assigning semantic meaning to this presentational convention would blur the distinction between human-oriented formatting and machine-interpretable structure.
 
@@ -86,11 +96,13 @@ For this reason, \*\*\*plain introduces a dedicated notation for concepts rather
 
 Here’s how our running example looks using this convention:
 
-\- **:App:** is a Python console application.
+```plainlang
+- :App: is a Python console application.
 
-\- **:Task:** describes an activity that needs to be done by the user.
+- :Task: describes an activity that needs to be done by the user.
 
-“Write **:App:** for managing **:Task:** items.”
+Write :App: for managing :Task: items.
+```
 
 Concept names must not contain spaces and may include only letters, digits, and a limited set of special characters such as dots and underscores. This constraint ensures that concepts are easy to recognize programmatically while remaining readable to humans.
 
@@ -104,15 +116,15 @@ In this whitepaper, we use bold typeface solely to help readers quickly identify
 
 While the :Concept: notation makes key concepts explicit and visible to human readers, it delivers real value to developers when those concepts give tools something to check against, making ambiguity easier to spot. To support this and to make checks reliable, \*\*\*plain defines a small set of rules that govern how concepts written in :Concept: notation are introduced and used.
 
-1. A concept must be defined before it can be used.  
-2. A definition must begin with a concept name.  
-3. A concept must not be redefined.  
-4. Concept names are case sensitive.  
-5. A concept’s meaning must not change.
+1. **A concept must be defined before it can be used.**  
+2. **A definition must begin with a concept name.**  
+3. **A concept must not be redefined.**  
+4. **Concept names are case sensitive.**  
+5. **A concept’s meaning must not change.**
 
 Together, these rules establish the conditions under which concepts can be checked reliably and used consistently, making ambiguity easier to surface in practice. The reasoning behind each rule is outlined below.
 
-1. A concept must be defined before it can be used
+1. **A concept must be defined before it can be used**
 
 The primary goal of requiring that a concept be explicitly defined before it can be used is to ensure that the specification commits to a single, intended meaning for that concept throughout the specifications. When a developer chooses to use the :Concept: notation, they are signaling that the word or phrase should be treated as a stable unit of meaning rather than as an ordinary, context-dependent term.
 
@@ -124,33 +136,39 @@ Centralizing concept definitions in a dedicated section makes them easy to revie
 
 Here is the full example:
 
-\*\*\*definitions\*\*\*
+```plainlang
+***definitions***
 
-\- **:App:** is a Python console application.
+- :App: is a Python console application.
 
-\- **:Task:** describes an activity that needs to be done by the user.
+- :Task: describes an activity that needs to be done by the user.
 
-\*\*\*functional specs\*\*\*
+***functional specs***
 
-“Write **:App:** for managing **:Task:** items.”
+Write :App: for managing :Task: items.
+```
 
 This rule introduces a level of rigor that is not present in typical prose writing, where terms are often introduced casually and clarified later. That tradeoff is deliberate. \*\*\*plain specifications are not merely read by humans but are also used as input for automatic code generation. Prioritizing explicit meaning and unambiguous interpretation over narrative flow reduces the risk of speculative or inconsistent interpretations during generation.
 
-2. A definition must begin with a concept name
+2. **A definition must begin with a concept name**
 
 In \*\*\*plain, every concept definition must begin with the concept name itself, written using :Concept: notation. This requirement exists to make such definitions immediately recognizable and unambiguous, both for programmatic tools and for human readers.
 
 Requiring definitions to begin with the concept name does not reduce the expressivity of the developer. Any natural-language definition can be rewritten to satisfy this constraint without loss of meaning. For example, a developer might initially write:
 
-\- An activity that needs to be done by the user is called **:Task:**.
+```plainlang
+- An activity that needs to be done by the user is called :Task:
+```
 
 This definition can be rewritten in canonical form as:
 
-\- **:Task:** describes an activity that needs to be done by the user.
+```plainlang
+- :Task: describes an activity that needs to be done by the user.
+```
 
 By enforcing a single canonical form for definitions, \*\*\*plain separates what a concept means from how a developer might naturally phrase that meaning in prose. Developers remain free to use natural language in definitions, but the structural role of a definition is made explicit and mechanically checkable.
 
-3. A concept must not be redefined
+3. **A concept must not be redefined**
 
 In larger specifications, it would be easy to miss that a concept has already been defined elsewhere if redefinition were allowed. More importantly, permitting redefinition would allow multiple, potentially conflicting meanings to coexist under the same name, undermining the purpose of introducing explicit concepts in the first place.
 
@@ -171,7 +189,7 @@ If a third module imports both, the name :Task: can no longer serve as a stable 
 
 For this reason, \*\*\*plain treats concept names as global commitments rather than local conveniences. Introducing a concept name establishes a single, stable unit of meaning that applies wherever that name appears. Prohibiting redefinition preserves that stability and ensures that both humans and tools can rely on concept names as unambiguous references throughout the specification.
 
-4. Concept names are case sensitive
+4. **Concept names are case sensitive**
 
 In \*\*\*plain, the developer is free to name concepts using any combination of the following ASCII characters:
 
@@ -195,17 +213,21 @@ Case sensitivity does introduce the possibility of accidental variation, particu
 
 By making case sensitivity a rule rather than a convention, \*\*\*plain reinforces the idea that concept names are not merely stylistic labels but explicit commitments to meaning. A difference in name \- however small \- is treated as a difference in concept, and therefore demands explicit intent.
 
-5. A concept’s meaning must not change
+5. **A concept’s meaning must not change**
 
 Philosophers of language[^5] have long pointed out that words do not carry meaning in isolation. Instead, meaning emerges through how words and concepts are used in context. As a result, a concept’s meaning is not fixed solely by its explicit definition; it is also shaped \- and can be distorted \- by how it is used in the specification text.
 
 Let’s take as an example the definition of :Task: from before:
 
-\- **:Task:** describes an activity that needs to be done by the user.
+```plainlang
+- :Task: describes an activity that needs to be done by the user.
+```
 
 If we were to allow the following functional specification, we would introduce significant ambiguity about the intended meaning of the concept :Task::
 
-\- :App: should be capable of running **:Task:** items concurrently.
+```plainlang
+- :App: should be capable of running **:Task:** items concurrently.
+```
 
 In this case, it is no longer clear whether :Task: refers to a duty performed by the user or to a technical operation executed by the system. In other words, the concept is implicitly redefined through its usage, even though its explicit definition has not changed.
 
@@ -217,12 +239,12 @@ By enforcing stability of meaning through use, this rule ensures that concepts f
 
 Natural language is inherently ambiguous, and that ambiguity does not disappear when specifications are used as input for automatic code generation. Certain words in a specification play a disproportionate role in shaping interpretation, and when their meaning is left implicit, even a capable renderer may adopt a plausible but unintended interpretation of the specification.
 
-By introducing the :Concept: notation, \*\*\*plain makes decisions about the meaning of key terms explicit in the specification rather than leaving them to be inferred during code generation, where such inferences are implicit, hard to inspect, and difficult to correct. What began as an ambiguous word like “task” becomes, through :Concept:, a stable unit of meaning that both humans and tools can rely on.
+By introducing the :Concept: notation, \*\*\*plain makes decisions about the meaning of key terms explicit in the specification rather than leaving them to be inferred during code generation, where such inferences are implicit, hard to inspect, and difficult to correct. What began as an ambiguous word like “*task*” becomes, through :Concept:, a stable unit of meaning that both humans and tools can rely on.
 
 The :Concept: notation and its accompanying rules provide a disciplined way to define, reuse, and validate such concepts without turning specifications into formal ontologies or rigid schemas. Where precision is required, they strengthen specifications by making key meanings explicit and stable, while allowing natural language to remain expressive elsewhere.
 
 [^1]: See the blog post [Beyond Vibe Coding](https://blog.codeplain.ai/p/beyond-vibe-coding) for background.
 [^2]: Readers familiar with Domain-Driven Design may notice a resemblance between concepts in \*\*\*plain and the Ubiquitous Language. This resemblance is not accidental. Both approaches are motivated by the same underlying problem: the ambiguity of natural language. The difference lies not in the problem they address, but in where ambiguity arises and how it can be resolved. Ubiquitous Language assumes that ambiguity can be detected, discussed, and repaired through interaction between developers and domain experts. :Concept: notation, on the other hand, improves how humans communicate intent to the \*\*\*plain renderer by making fewer things guessable and more things explicit.
-[^3]: The other sections are technical specs, test specs, and functional specs. More information about these sections will be provided in a follow up whitepaper.
+[^3]: The other sections are *technical specs*, *test specs*, and *functional specs*. More information about these sections will be provided in a follow up whitepaper.
 [^4]: The details of the support for modular specification structure in \*\*\*plain will be provided in a follow up whitepaper.
 [^5]: Ludwig Wittgenstein, Philosophical Investigations
