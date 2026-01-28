@@ -2,6 +2,8 @@
 title: "On the Concept of :Concept:"
 ---
 
+import dddBookImg from "./img/domain-driven-design-book.jpg";
+
 # The :Concept: Notation in \*\*\*plain Specifications
 
 One of the most persistent objections raised by software developers against using specifications as the source of truth is the inherent ambiguity of natural language. Words and sentences that appear clear to a human reader often admit multiple interpretations, especially when removed from their original social, organizational, or conversational context.
@@ -65,12 +67,25 @@ Let’s say that the developer realizes, either on their own or with the help of
 A more scalable approach is to provide an explicit definition once and reuse it consistently throughout the specifications. For example, we could define the word “*task*” as follows:
 
 ```plainlang
-- **Task** describes an activity that needs to be done by the user.
+- Task describes an activity that needs to be done by the user.
 ```
 
 With this definition in place, the specification strongly indicates that the developer’s intention is to describe a personal productivity application rather than a system for managing responsibilities, computational processes, or long-term undertakings.
 
-But now imagine a longer specification containing dozens of words that may require disambiguation. How would the developer know which words have already been explicitly defined and which still have the potential for misinterpretation? In text written for humans, a common way to draw attention to key concepts is to capitalize and bold them (see figure 1 for an example from a Domain-Driven Design book). Applied to our example, this approach would look like the following:
+But now imagine a longer specification containing dozens of words that may require disambiguation. How would the developer know which words have already been explicitly defined and which still have the potential for misinterpretation? In text written for humans, a common way to draw attention to key concepts is to capitalize and bold them (see Figure 1 for an example).
+
+<figure style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  <img
+    src={dddBookImg}
+    alt="Figure 1: A page from Domain-Driven Design with key concepts explicitly marked in bold."
+    style={{ width: "75%", height: "auto", display: "block" }}
+  />
+  <figcaption style={{ textAlign: "center" }}>
+    Figure 1: A page from <em>Domain-Driven Design</em> with key concepts explicitly marked in bold.
+  </figcaption>
+</figure>
+
+Applied to our example, this approach would look like the following:
 
 ```plainlang
 - **Task** describes an activity that needs to be done by the user.
