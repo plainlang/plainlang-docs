@@ -3,6 +3,7 @@ title: "On the Concept of :Concept:"
 ---
 
 import dddBookImg from "./img/domain-driven-design-book.jpg";
+import refactoringToolImg from "./img/concept-refactoring-tool.png";
 
 # The :Concept: Notation in \*\*\*plain Specifications
 
@@ -125,7 +126,18 @@ The goal of :Concept: is not to eliminate natural language or replace it with a 
 
 To make programmatic tools more robust and easier to develop, \*\*\*plain does not treat plural forms of concept names as syntactic variants of their singular counterparts. Instead, each concept name is interpreted as a distinct concept. As a result, plurality must be expressed through surrounding language \- for example, by writing :Task: items rather than relying on a pluralized concept name such as :Tasks:.
 
-In this whitepaper, we use bold typeface solely to help readers quickly identify key concepts. In an editor, an automatic concept-detection tool could assist the developer not only by highlighting concepts written in :Concept: notation, but also by providing utilities such as quick access to concept definitions and an overview of where each concept is used elsewhere in the specifications.
+In this whitepaper, we use bold typeface solely to help readers quickly identify key concepts. In an editor, an automatic concept-detection tool could assist the developer not only by highlighting concepts written in :Concept: notation, but also by providing utilities such as quick access to concept definitions and an overview of where each concept is used elsewhere in the specifications (see Figure 2 for an example of such a tool).
+
+<figure style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  <img
+    src={refactoringToolImg}
+    alt="Figure 1: A page from Domain-Driven Design with key concepts explicitly marked in bold."
+    style={{ width: "75%", height: "auto", display: "block" }}
+  />
+  <figcaption style={{ textAlign: "center" }}>
+    Figure 2: A screenshot of an IDE where a concept is renamed using refactoring functionality.
+  </figcaption>
+</figure>
 
 ## Making Concepts Machine-Checkable
 
