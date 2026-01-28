@@ -94,7 +94,7 @@ Applied to our example, this approach would look like the following:
 Write an app for managing **Tasks**.
 ```
 
-When reviewing the specification, the developer may then notice that the word “app” is another term whose meaning is not yet explicit and could therefore be misinterpreted. For example, the \*\*\*plain renderer might assume that the developer intends a web or mobile application, while the developer is actually aiming for a console application written in Python. To avoid this ambiguity, the developer can make the intended meaning explicit by providing a definition:
+When reviewing the specification, the developer may then notice that the word “*app*” is another term whose meaning is not yet explicit and could therefore be misinterpreted. For example, the \*\*\*plain renderer might assume that the developer intends a web or mobile application, while the developer is actually aiming for a console application written in Python. To avoid this ambiguity, the developer can make the intended meaning explicit by providing a definition:
 
 ```plainlang
 - **App** is a Python console application.
@@ -122,7 +122,7 @@ Write :App: for managing :Task: items.
 
 Concept names must not contain spaces and may include only letters, digits, and a limited set of special characters such as dots and underscores. This constraint ensures that concepts are easy to recognize programmatically while remaining readable to humans.
 
-The goal of :Concept: is not to eliminate natural language or replace it with a formal ontology, but to provide a mechanism for anchoring meaning where ambiguity is costly while preserving the flexibility of prose elsewhere[^2]. Accordingly, :Concept: notation is a precision tool rather than a requirement: words like console, describes, or activity may appear without it when the developer does not intend to constrain their interpretation.
+The goal of :Concept: is not to eliminate natural language or replace it with a formal ontology, but to provide a mechanism for anchoring meaning where ambiguity is costly while preserving the flexibility of prose elsewhere[^2]. Accordingly, :Concept: notation is a precision tool rather than a requirement: words like "*console*", "*describes*", or "*activity*" may appear without it when the developer does not intend to constrain their interpretation.
 
 To make programmatic tools more robust and easier to develop, \*\*\*plain does not treat plural forms of concept names as syntactic variants of their singular counterparts. Instead, each concept name is interpreted as a distinct concept. As a result, plurality must be expressed through surrounding language \- for example, by writing :Task: items rather than relying on a pluralized concept name such as :Tasks:.
 
