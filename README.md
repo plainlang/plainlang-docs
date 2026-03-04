@@ -26,16 +26,4 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+[plainlang.org](https://www.plainlang.org/) is hosted on [Cloudflare](https://www.cloudflare.com/). To deploy changes to production site just push changes to GitHub repo.
