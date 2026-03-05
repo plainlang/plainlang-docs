@@ -10,7 +10,7 @@ title: Best Practices
 3. **Be Specific**: Write clear, testable requirements in functional specs
 4. **Use Acceptance Tests**: Add acceptance tests for requirements that need verification
 5. **Leverage Templates**: Use the standard template library for common patterns
-6. **Keep It Simple**: Plain specifications should be readable by both humans and AI
+6. **Keep It Simple**: ***plain specifications should be readable by both humans and AI
 7. **Reference Concepts Consistently**: Use [concept notation](./definitions/concept-notation) to disambiguate key concepts
 
 ## Complete Example
