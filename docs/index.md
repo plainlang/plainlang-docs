@@ -1,14 +1,21 @@
 ---
 sidebar_position: 1
-title: Introduction
+title: Getting Started
 ---
 
-# Introduction
+# Getting Started
 
 Welcome to the ***plain documentation!
 
-***plain is a specification language designed for writing software requirements in a clear, structured format. This documentation will help you understand how to write `.plain` specification files for use in the the codeplain system.
+***plain is a specification language designed for writing software requirements in a clear, structured format so that the specifications can become the source of truth for the software's functionality. This documentation will help you understand:
 
-## Getting Started
+- [***plain specification language](./language-guide/)
+- [spec-driven development approach](./whitepapers/)
 
-To learn about the syntax and structure of ***plain specification files, see the [***plain language guide](./language-guide/).
+## Prerequisites
+
+- **Editor** - You can write ***plain specifications in any editor or IDE of your choice. ***plain files are textual files that can be committed to your code repository and reviewed through pull requests or any other review process that you already have in place for code.
+
+- **Renderer** - To render working software from ***plain specifications you need a renderer. Please check [*codeplain web site](https://www.codeplain.ai/) for instructions specific to your platform how to download and set up *codeplain renderer.
+
+If you're using Visual Studio Code or Cursor IDE, we also recommend installing [***plain language extension](https://marketplace.visualstudio.com/items?itemName=Codeplain.plainsyntax).
