@@ -231,7 +231,7 @@
   margin: 0;
 }
 
-/* Plain file syntax highlighting */
+/* ***plain file syntax highlighting */
 .codeBlock.plainLang {
   color: rgba(255, 255, 255, 0.8);
 }

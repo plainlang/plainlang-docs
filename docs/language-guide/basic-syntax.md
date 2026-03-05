@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: Basic syntax
+title: Basic Syntax
 ---
 
-# Basic syntax
+# Basic Syntax
 
 ## About ***plain programming language
 

@@ -7,10 +7,14 @@ title: Getting Started
 
 Welcome to the ***plain documentation!
 
-***plain is a specification language designed for writing software requirements in a clear, structured format so that the specifications can become the source of truth for the software's functionality. This documentation will help you understand:
+## What is ***plain?
+
+***plain is a specification language designed for writing software requirements in a clear, structured format so that the specifications can become the source of truth for the software's functionality. 
+
+This documentation will help you understand:
 
 - [***plain specification language](./language-guide/)
-- [spec-driven development approach](./whitepapers/)
+- [Spec-driven development approach](./whitepapers/)
 
 ## Prerequisites
 

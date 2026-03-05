@@ -5,7 +5,7 @@ title: Concept Notation
 
 # Concept Notation
 
-Concepts are the [building blocks of plain specifications](/docs/whitepapers/on-the-concept-of-concept). They are written between colons:
+Concepts are the [building blocks of ***plain specifications](/docs/whitepapers/on-the-concept-of-concept). They are written between colons:
 
 ```
 :ConceptName:
@@ -20,7 +20,7 @@ Concepts are the [building blocks of plain specifications](/docs/whitepapers/on-
 
 In addition to concepts you define yourself, ***plain provides a set of [predefined concepts](./predefined-concepts) that are commonly used throughout specifications.
 
-## Example usage
+## Example Usage
 
 ```
 - :User: should be able to add :Task: to :TaskList:
