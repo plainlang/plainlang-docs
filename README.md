@@ -27,3 +27,7 @@ This command generates static content into the `build` directory and can be serv
 ## Deployment
 
 [plainlang.org](https://www.plainlang.org/) is hosted on [Cloudflare](https://www.cloudflare.com/). To deploy changes to production site just push changes to GitHub repo.
+
+# License
+
+***plain is distributed under the terms of the Apache License (Version 2.0). See [LICENSE](LICENSE) for details.
