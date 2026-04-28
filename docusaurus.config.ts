@@ -47,8 +47,7 @@ const config: Config = {
   themeConfig: {
     image: 'img/plainlang_social_image.png',
     colorMode: {
-      defaultMode: 'dark',
-      respectPrefersColorScheme: false,
+      respectPrefersColorScheme: true,
     },
     navbar: {
       title: '',
