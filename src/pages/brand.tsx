@@ -73,57 +73,6 @@ export default function Brand(): ReactNode {
           </a>
         </section>
 
-        {/* Identity values */}
-        <section className={styles.section}>
-          <div className={styles.sectionInner}>
-            <div className={styles.sectionLabel}>IDENTITY</div>
-            <div className={styles.valuesGrid}>
-              <div className={styles.valueGroup}>
-                <span>Logical</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Thoughtful</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Reliable</span>
-              </div>
-              <div className={styles.valueGroup}>
-                <span>Progress</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Productive</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Trailblazing</span>
-              </div>
-              <div className={styles.valueGroup}>
-                <span>Powerful</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Detail-oriented</span>
-                <span className={styles.valueSep}>—</span>
-                <span>Empowering</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Philosophy */}
-        <section className={styles.philosophySection}>
-          <div className={styles.sectionLabel}>PHILOSOPHY</div>
-          <blockquote className={styles.philosophyQuote}>
-            Deep understanding of the programmer's mind and their environment.
-          </blockquote>
-          <blockquote className={styles.philosophyQuote}>
-            The future is spec-driven. Spec-driven development will be how software
-            is built in 2035.
-          </blockquote>
-          <blockquote className={styles.philosophyQuote}>
-            We're the only AI-powered programming solution built on the solid
-            foundations of the ***plain specification language.
-          </blockquote>
-          <blockquote className={styles.philosophyQuote}>
-            While functionality is essential in software development, maintaining and
-            evolving the code requires it to be clean, well-organized, readable, and
-            easy to understand — in other words, thoughtfully engineered.
-          </blockquote>
-        </section>
-
         {/* Logo */}
         <section className={styles.section}>
           <div className={styles.sectionInner}>
