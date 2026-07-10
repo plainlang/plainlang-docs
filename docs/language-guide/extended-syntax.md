@@ -18,6 +18,8 @@ import:
 requires:
   - dependency-module-1
   - dependency-module-2
+exported_concepts:
+  - :SharedConcept:
 ---
 ```
 
@@ -48,6 +50,26 @@ requires:
 ```
 
 Use `requires:` when your specification depends on functionality implemented in other modules that need to be generated first.
+
+### `exported_concepts` Section
+
+The `exported_concepts:` section declares which concepts from the current module are made available to other modules.
+
+This is useful because concepts in ***plain must be defined before they are used. By exporting concepts, one module can provide shared concept definitions to the next module without introducing a separate third file just to hold shared definitions.
+
+**Example:**
+```yaml
+requires:
+  - authentication-module
+  - database-layer
+exported_concepts:
+  - :PasswordManagerModule:
+```
+
+Use `exported_concepts:` when:
+- A module defines concepts that other modules must reference
+- You want to pass those concepts across module boundaries
+- You want to avoid creating an extra shared-only module for concept definitions
 
 ## Comments
 
