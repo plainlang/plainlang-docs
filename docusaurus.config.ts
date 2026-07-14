@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: '***plain, the language of spec-driven development',
-  tagline: '***plain is a specification language that combines the efficiency of natural language with the control and precision of code.',
+  title: '∗∗∗plain, the language of spec-driven development',
+  tagline: '∗∗∗plain is a specification language that combines the efficiency of natural language with the control and precision of code.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
