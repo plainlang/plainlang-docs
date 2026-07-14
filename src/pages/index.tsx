@@ -7,17 +7,20 @@ import styles from './index.module.css';
 
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
+  const pageTitle = siteConfig.title;
+  const pageTagline = siteConfig.tagline;
+
   return (
     <Layout
-      title={siteConfig.title}
-      description="The language of spec-driven development">
+      title={pageTitle}
+      description={pageTagline}>
       <main className={styles.heroWrapper}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>
-            ***plain, the language of spec-driven development
+            {pageTitle}
           </h1>
           <p className={styles.heroSubtitle}>
-            ***plain is a specification language that combines the efficiency of natural language with the control and precision of code.
+            {pageTagline}
           </p>
           <div className={styles.ctaButtons}>
             <a href="/docs/language-guide/" className={styles.primaryButton}>
