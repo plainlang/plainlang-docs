@@ -27,7 +27,7 @@ Lines starting with `>` are ignored when rendering software code.
 > This is an example of a comment in ***plain
 ```
 
-## Templates
+## Liquid Templates
 
 ***plain specifications are processed with [Liquid](https://shopify.github.io/liquid/), an open-source template language created by Shopify, so the full Liquid syntax is available in your specifications.
 
