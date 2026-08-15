@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 title: Extended syntax
 ---
 
@@ -7,69 +7,17 @@ title: Extended syntax
 
 ## YAML Frontmatter
 
-The frontmatter is enclosed between `---` markers and can contain:
+The frontmatter is enclosed between `---` markers and can contain the `description`, `import`, `requires`, `exported_concepts`, and `required_concepts` fields.
 
 ```yaml
 ---
 description: "Optional description of this specification"
 import:
   - module-name-1
-  - module-name-2
-requires:
-  - dependency-module-1
-  - dependency-module-2
-exported_concepts:
-  - :SharedConcept:
 ---
 ```
 
-### `import` Section
-
-The `import:` section is used to include definitions, implementation requirements, and test requirements from other modules or templates. Imported modules should **not** contain functional specifications - they only provide reusable definitions and constraints.
-
-**Example:**
-```yaml
-import:
-  - typescript-react-app-template
-```
-
-Common use cases:
-- Importing language-specific templates (e.g., `python-console-app-template`)
-- Importing shared concept definitions
-- Importing implementation and testing conventions
-
-### `requires` Section
-
-The `requires:` section specifies dependencies on other modules that must be built before this specification. Unlike `import:`, required modules can contain functional specifications and represent complete software modules.
-
-**Example:**
-```yaml
-requires:
-  - authentication-module
-  - database-layer
-```
-
-Use `requires:` when your specification depends on functionality implemented in other modules that need to be generated first.
-
-### `exported_concepts` Section
-
-The `exported_concepts:` section declares which concepts from the current module are made available to other modules.
-
-This is useful because concepts in ***plain must be defined before they are used. By exporting concepts, one module can provide shared concept definitions to the next module without introducing a separate third file just to hold shared definitions.
-
-**Example:**
-```yaml
-requires:
-  - authentication-module
-  - database-layer
-exported_concepts:
-  - :PasswordManagerModule:
-```
-
-Use `exported_concepts:` when:
-- A module defines concepts that other modules must reference
-- You want to pass those concepts across module boundaries
-- You want to avoid creating an extra shared-only module for concept definitions
+See [Modules](./modules#yaml-frontmatter) for details on the frontmatter fields and module kinds.
 
 ## Comments
 
@@ -79,16 +27,11 @@ Lines starting with `>` are ignored when rendering software code.
 > This is an example of a comment in ***plain
 ```
 
-## Template System
+## Templates
 
-***plain supports template inclusion using the `{% include %}` syntax, which allows you to use predefined templates in your specifications.
+***plain specifications are processed with [Liquid](https://shopify.github.io/liquid/), an open-source template language created by Shopify, so the full Liquid syntax is available in your specifications.
 
-```plain
-{% include "python-console-app-template.plain", main_executable_file_name: "my_app.py" %}
-```
-Predefined templates are available for Go console apps, Python console apps, and TypeScript React apps in the [standard template library](https://github.com/Codeplain-ai/codeplain/tree/main/standard_template_library). You can also create your own custom templates.
-
-The template system enables code reuse and standardization across ***plain projects.
+Note that templates are expanded textually before the specification is interpreted — unlike `import`, which includes another module semantically (see [Modules](./modules)).
 
 ## Linked Resources
 
@@ -107,7 +50,3 @@ If you include a link using the markdown syntax, the linked resource will be pas
 - Only links to files in the same folder (and its subfolders) as the ***plain specification are supported. Links to external resources are not supported.
 - File paths are resolved relative to the location of the ***plain specification file.
 - All types are supported, except binary files.
-
-## Liquid templates
-
-***plain supports Liquid templates. Liquid is an open-source template language created by Shopify (https://shopify.github.io/liquid/).

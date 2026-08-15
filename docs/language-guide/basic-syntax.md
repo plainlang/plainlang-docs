@@ -23,7 +23,7 @@ Here's an example of a "hello, world" program in ***plain.
 
 ## `.plain` File Structure
 
-A `.plain` file consists of an optional [YAML frontmatter section](./extended-syntax#yaml-frontmatter) followed by several standardized sections marked with `***section name***` headers.
+A `.plain` file is one [module](./modules). It consists of an optional [YAML frontmatter section](./modules#yaml-frontmatter) followed by several standardized sections marked with `***section name***` headers.
 
 There are four types of specification sections:
 
@@ -32,9 +32,23 @@ There are four types of specification sections:
 - `***test reqs***`
 - `***functional specs***`
 
-Every plain source file requires at least one functional spec and an associated implementation req.
+Each section appears at most once per file, and all sections are optional — which ones are allowed depends on the [module kind](./modules#module-kinds). To be renderable, a module needs at least one functional spec plus the implementation reqs to build it — its own or imported from another module.
+
+Write sections in the canonical order given above. Definitions come first because every concept must be defined before it is referenced. Functional specs come last because they are rendered incrementally and their nested acceptance tests close the file.
 
 Functional specs must reside in leaf sections while other specifications can be placed also in non-leaf sections. Specifications in non-leaf sections apply not just to the section itself but to all of its subsections.
+
+### Section Ownership
+
+Each kind of fact is read **only from its owning section** — a requirement placed in the wrong section is silently ignored, not flagged. Before writing any requirement, place it by content:
+
+| Content | Owning section |
+|---|---|
+| Concepts (`:CamelCaseToken:`) | `***definitions***` |
+| HOW the software is built — tech stack, architecture, coding standards — and everything about `:UnitTests:` | `***implementation reqs***` |
+| Everything about `:ConformanceTests:` — framework, run command, mocking and network policy | `***test reqs***` |
+| WHAT the software does — observable, language-agnostic behavior | `***functional specs***` |
+| End-to-end workflow verification of one functional spec | nested `***acceptance tests***` |
 
 ## Definitions
 
@@ -94,7 +108,7 @@ See [Functional Specs](./functional-specs) for more information.
 
 Acceptance tests can be used to further refine the functional spec and especially to incorporate constraints on the implementation.
 
-Acceptance tests are specified with a keyword `***acceptance tests***` as a subsection within `***functional specs***` section. Each acceptance tests must be an item in a list.
+Acceptance tests are specified with a keyword `***acceptance tests***` as a subsection within `***functional specs***` section. Each acceptance tests must be an item in a list. Note that `***acceptance tests***` is never a top-level section — it appears only nested under a single functional spec.
 
 Here's an example of a "Hello, World" application with one acceptance test.
 
