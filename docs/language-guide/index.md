@@ -13,6 +13,7 @@ This section is a comprehensive guide to the ***plain language.
 - [Test Reqs](./test-reqs)
 - [Functional Specs](./functional-specs)
 - [Acceptance Tests](./acceptance-tests)
+- [Modules](./modules)
 - [Extended Syntax](./extended-syntax)
 - [Best Practices](./best-practices)
 - [Glossary](./glossary)
