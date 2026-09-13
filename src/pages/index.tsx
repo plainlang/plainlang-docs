@@ -23,7 +23,7 @@ export default function Home(): ReactNode {
             {pageTagline}
           </p>
           <div className={styles.ctaButtons}>
-            <a href="/docs/language-guide/" className={styles.primaryButton}>
+            <a href="/docs/" className={styles.primaryButton}>
               GET STARTED
             </a>
             {/* <a href="#demo" className={styles.secondaryButton}>

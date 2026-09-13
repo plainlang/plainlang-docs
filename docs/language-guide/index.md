@@ -3,7 +3,7 @@ title: Language guide
 description: A comprehensive guide to the ***plain language.
 ---
 
-This section is a comprehensive guide to the ***plain language.
+This section is a comprehensive guide to the ∗∗∗plain language.
 
 ## Contents
 
@@ -22,3 +22,5 @@ This section is a comprehensive guide to the ***plain language.
 
 - [Standard Template Library](https://github.com/Codeplain-ai/codeplain/tree/main/standard_template_library)
 - [Example specifications](https://github.com/Codeplain-ai/plainlang-examples)
+- [plain-forge](https://github.com/plainlang/plain-forge) - toolkit for writing and maintaining ∗∗∗plain specifications inside a coding agent
+- [pyro](https://github.com/plainlang/pyro) - open-source renderer that turns ∗∗∗plain specifications into working, tested code
