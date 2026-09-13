@@ -64,6 +64,11 @@ const config: Config = {
           label: 'docs',
         },
         {
+          to: '/docs/toolkit',
+          position: 'right',
+          label: 'toolkit',
+        },
+        {
           to: '/docs/whitepapers',
           position: 'right',
           label: 'white papers',
