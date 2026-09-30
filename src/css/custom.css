@@ -7,6 +7,18 @@
   --color-bg: #FFF;
   --color-text: #000;
   --color-accent: #0A1FD4;
+  --color-accent-hover: #0819A8;      /* same hue, darker */
+  --color-text-on-accent: #FFF;
+  --color-bg-raised: #FFF;             /* floating surfaces: banners, popovers */
+  --color-bg-hover: rgba(0, 0, 0, 0.05);
+  --color-border: rgba(0, 0, 0, 0.28);       /* control outline at rest */
+  --color-border-hover: rgba(0, 0, 0, 0.5);
+  --color-separator: rgba(0, 0, 0, 0.1);
+  --color-text-secondary: rgba(0, 0, 0, 0.65);
+  --shadow-raised:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.08);
   
   /* Docusaurus Variables - Light Theme */
   --ifm-font-family-base: var(--font-base);
@@ -26,6 +38,15 @@
   --color-bg: #000;
   --color-text: #FFF;
   --color-accent: #79FC96;
+  --color-accent-hover: #95FDAD;      /* same hue, lighter */
+  --color-text-on-accent: #000;
+  --color-bg-raised: #111;
+  --color-bg-hover: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.3);
+  --color-border-hover: rgba(255, 255, 255, 0.55);
+  --color-separator: rgba(255, 255, 255, 0.12);
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --shadow-raised: 0 0 0 1px rgba(255, 255, 255, 0.14);
   
   /* Docusaurus Variables - Dark Theme */
   --ifm-color-primary: var(--color-accent);

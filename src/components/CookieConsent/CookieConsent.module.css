@@ -1,0 +1,249 @@
+.banner {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 400; /* above the fixed navbar (300) */
+  width: min(440px, calc(100vw - 32px));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 20px;
+  background-color: var(--color-bg-raised);
+  color: var(--color-text);
+  border-radius: 4px;
+  box-shadow: var(--shadow-raised); /* ring + lift; adapts to what sits behind */
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  animation: enter 200ms ease-out;
+}
+
+/* Exit is softer and shorter than enter. */
+.banner[data-state='closing'] {
+  animation: exit 150ms ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes enter {
+  from { opacity: 0; translate: 0 8px; }
+}
+
+@keyframes exit {
+  to { opacity: 0; translate: 0 4px; }
+}
+
+.text {
+  margin: 0;
+  flex: 1 1 280px;
+}
+
+.text a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 100%;
+  justify-content: flex-end;
+}
+
+/* Same voice as .primaryButton / .secondaryButton on the homepage,
+   with token colors and real hover / press states. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 100;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 150ms ease-out;
+  transition-property: background-color, color, box-shadow, scale;
+}
+
+/* Leading icon: icon-side padding = text-side padding - 2px */
+.withIcon {
+  padding-inline-start: 14px;
+}
+
+/* Icon-only: square, same height as text buttons (16px icon + 2 x 9px).
+   Sits at the far left of the action row. */
+.iconButton {
+  padding: 9px;
+  margin-inline-end: auto;
+}
+
+.button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5; /* matches the light label weight */
+  flex: 0 0 auto;
+}
+
+.button:active {
+  scale: 0.96;
+}
+
+.button:focus-visible,
+.switch:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.primary {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+
+.primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.secondary:hover {
+  background-color: var(--color-bg-hover);
+  box-shadow: 0 0 0 1px var(--color-border-hover);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+}
+
+.ghost:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-text);
+}
+
+/* Preferences view */
+.preferences {
+  flex: 1 1 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-separator);
+}
+
+.pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.pref + .pref {
+  border-top: 1px solid var(--color-separator);
+}
+
+.pref:has(.switch:disabled) {
+  cursor: default;
+}
+
+.prefText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.prefName {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.prefDesc {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+/* Switch: 20px track, 16px knob, 2px inset -> concentric radii (10 = 8 + 2) */
+.switch {
+  appearance: none;
+  margin: 0;
+  flex: 0 0 auto;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: var(--color-border);
+  cursor: pointer;
+  transition: background-color 150ms ease-out;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: var(--color-bg-raised);
+  transition: translate 150ms ease-out;
+}
+
+.switch:hover:not(:disabled) {
+  background-color: var(--color-border-hover);
+}
+
+.switch:checked,
+.switch:checked:hover:not(:disabled) {
+  background-color: var(--color-accent);
+}
+
+.switch:checked::after {
+  translate: 16px 0;
+}
+
+.switch:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner {
+    animation-duration: 0s;
+  }
+
+  .switch,
+  .switch::after {
+    transition: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Stack, primary on top */
+  .actions {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .iconButton {
+    width: auto;
+    align-self: flex-start;
+  }
+}
