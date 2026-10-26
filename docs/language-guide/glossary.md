@@ -11,7 +11,7 @@ This page defines key terms used in ***plain and serves as a quick reference whi
 **Acceptance test** is a specific, observable check written by developer that defines how a particular aspect of functionality should be tested and validated.
 
 <span id="concept"></span>
-**Concept** is a domain entity, artifact, or shared reference that other requirements can point to. In ***plain the concepts should be expressed using [:Concept: notation](/docs/language-guide/definitions/concept-notation).
+**Concept** is a domain entity, artifact, or shared reference that other requirements can point to. In ***plain the concepts should be expressed using [:Concept: notation](./definitions/concept-notation).
 
 <span id="conformance-tests"></span>
 **Conformance tests** are automatically generated from the specifications. They check whether the implementation matches the specification.

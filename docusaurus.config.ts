@@ -72,12 +72,42 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/plainlang/plainlang-docs/edit/main/',
+          // Edit links on frozen versions point at the live docs, not the snapshot.
+          editCurrentVersion: true,
+          // Language versioning. `docs/` is the "current" version. Until a
+          // snapshot is cut it is also the released one, labelled 0.3 and
+          // served at /docs/. To freeze it when work on the next version
+          // starts: `yarn docusaurus docs:version 0.3` (see README.md).
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: '0.3',
+              path: '',
+              // Show "Version: 0.3" on doc pages even with a single version.
+              badge: true,
+            },
+          },
         },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
+    ],
+  ],
+
+  plugins: [
+    [
+      // Unversioned content (toolkit, whitepapers), served at the site root
+      // so it is not snapshotted together with the language docs.
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'unversioned',
+        path: 'unversioned',
+        routeBasePath: '/',
+        sidebarPath: './sidebars-unversioned.ts',
+        editUrl: 'https://github.com/plainlang/plainlang-docs/edit/main/',
+      },
     ],
   ],
 
@@ -95,18 +125,26 @@ const config: Config = {
       },
       items: [
         {
+          // Rendered as a real dropdown only when it has more than one entry,
+          // hence the "All versions" link while there is a single version.
+          type: 'docsVersionDropdown',
+          position: 'left',
+          dropdownActiveClassDisabled: true,
+          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+        },
+        {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'right',
           label: 'docs',
         },
         {
-          to: '/docs/toolkit',
+          to: '/toolkit',
           position: 'right',
           label: 'toolkit',
         },
         {
-          to: '/docs/whitepapers',
+          to: '/whitepapers',
           position: 'right',
           label: 'white papers',
         },

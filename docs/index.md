@@ -16,7 +16,7 @@ You can write ∗∗∗plain specifications in any editor or IDE of your choice.
 This documentation will help you understand:
 
 - [∗∗∗plain](./language-guide/) - specification language for capturing durable information about software
-- [toolkit](./toolkit) - the open-source tools that coding agents use to write and render ∗∗∗plain specifications
+- [toolkit](/toolkit) - the open-source tools that coding agents use to write and render ∗∗∗plain specifications
 
 ## Toolkit
 
