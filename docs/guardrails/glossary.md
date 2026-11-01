@@ -19,6 +19,9 @@ This page defines key terms used in ∗∗∗plain and serves as a quick referen
 <span id="definitions"></span>
 **Definitions** declare named concepts that the rest of the specification can refer to. Definitions are the shared domain model and vocabulary for the specification.
 
+<span id="durable-system-knowledge"></span>
+**Durable system knowledge** is everything about a software system that must survive so that the system can be safely rebuilt: the specifications that state what the software must do, the tests that any implementation must pass, and the decisions that define how the system is shaped. It is what a [regenerative software](/regenerative-software) system is regenerated from. In ∗∗∗plain it is captured in functional specs, acceptance tests, and implementation reqs.
+
 <span id="functional-specs"></span>
 **Functional specs** describe what the software must do. These are the behavioral requirements of the system.
 
