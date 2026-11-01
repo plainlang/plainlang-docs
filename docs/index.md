@@ -15,8 +15,16 @@ You can write ∗∗∗plain specifications in any editor or IDE of your choice.
 
 This documentation will help you understand:
 
+- [regenerative software](/regenerative-software) - the approach ∗∗∗plain is built for
 - [∗∗∗plain](./language-guide/) - specification language for capturing durable information about software
 - [toolkit](/toolkit) - the open-source tools that coding agents use to write and render ∗∗∗plain specifications
+
+## Regenerative software
+
+Regenerative software is software whose code is treated as a disposable artifact. When the software must change, the code is regenerated from durable system knowledge: the specifications that state what the software must do, the tests any implementation must pass, the architecture decision records (ADRs) that define how the system is shaped, and anything else that is required so that the code can be safely deleted and regenerated at any time.
+
+Read more on the [regenerative software](/regenerative-software) page.
+
 
 ## Toolkit
 
