@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: Getting Started
+title: getting started
 ---
 
-# Getting Started
+# getting started
 
 Welcome to the ∗∗∗plain documentation!
 

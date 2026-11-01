@@ -1,10 +1,10 @@
 ---
-title: Regenerative software
+title: regenerative software
 description: What regenerative software is, why it matters now that code is cheap to produce, and how ∗∗∗plain fits into it.
 sidebar_position: 10
 ---
 
-# Regenerative software
+# regenerative software
 
 Regenerative software is software whose code is treated as a disposable artifact. Its implementation can be regenerated from durable system knowledge as requirements and understanding evolve.
 

@@ -26,7 +26,7 @@ This page defines key terms used in ∗∗∗plain and serves as a quick referen
 **Implementation reqs** describe how the software should be implemented or constrained. These are non-functional requirements and implementation constraints such as language, framework, file naming, architecture, or coding rules.
 
 <span id="renderer"></span>
-**Renderer** is a tool that creates a working software from a ∗∗∗plain specification.
+**Renderer** is a tool that creates working software from a ∗∗∗plain specification.
 
 <span id="test-reqs"></span>
 **Test reqs** describe how conformance tests should be generated, structured, and executed. These are testing constraints for the spec-compliance test suite, not requirements for the implementation code itself.

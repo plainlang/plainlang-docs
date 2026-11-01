@@ -1,5 +1,5 @@
 ---
-title: Toolkit
+title: toolkit
 description: The open-source stack that gives coding agents everything they need for regenerative software.
 sidebar_position: 30
 ---
