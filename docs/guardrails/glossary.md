@@ -5,13 +5,13 @@ title: Glossary
 
 # Glossary
 
-This page defines key terms used in ***plain and serves as a quick reference while reading the language guide.
+This page defines key terms used in ∗∗∗plain and serves as a quick reference while reading the ∗∗∗plain documentation.
 
 <span id="acceptance-test"></span>
 **Acceptance test** is a specific, observable check written by developer that defines how a particular aspect of functionality should be tested and validated.
 
 <span id="concept"></span>
-**Concept** is a domain entity, artifact, or shared reference that other requirements can point to. In ***plain the concepts should be expressed using [:Concept: notation](./definitions/concept-notation).
+**Concept** is a domain entity, artifact, or shared reference that other requirements can point to. In ∗∗∗plain the concepts should be expressed using [:Concept: notation](./definitions/concept-notation).
 
 <span id="conformance-tests"></span>
 **Conformance tests** are automatically generated from the specifications. They check whether the implementation matches the specification.
@@ -26,7 +26,7 @@ This page defines key terms used in ***plain and serves as a quick reference whi
 **Implementation reqs** describe how the software should be implemented or constrained. These are non-functional requirements and implementation constraints such as language, framework, file naming, architecture, or coding rules.
 
 <span id="renderer"></span>
-**Renderer** is a tool that creates a working software from a ***plain specification.
+**Renderer** is a tool that creates a working software from a ∗∗∗plain specification.
 
 <span id="test-reqs"></span>
 **Test reqs** describe how conformance tests should be generated, structured, and executed. These are testing constraints for the spec-compliance test suite, not requirements for the implementation code itself.

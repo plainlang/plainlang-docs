@@ -29,7 +29,7 @@ Lines starting with `>` are ignored when rendering software code.
 
 ## Liquid Templates
 
-***plain specifications are processed with [Liquid](https://shopify.github.io/liquid/), an open-source template language created by Shopify, so the full Liquid syntax is available in your specifications.
+∗∗∗plain specifications are processed with [Liquid](https://shopify.github.io/liquid/), an open-source template language created by Shopify, so the full Liquid syntax is available in your specifications.
 
 Note that templates are expanded textually before the specification is interpreted — unlike `import`, which includes another module semantically (see [Modules](./modules)).
 
@@ -44,9 +44,9 @@ Here's an example of a linked resource (see Task manager example application for
   are provided in the file [task_modal_specification.yaml](task_modal_specification.yaml).
 ```
 
-If you include a link using the markdown syntax, the linked resource will be passed along with the ***plain specification to the renderer.
+If you include a link using the markdown syntax, the linked resource will be passed along with the ∗∗∗plain specification to the renderer.
 
 **Important Notes:**
-- Only links to files in the same folder (and its subfolders) as the ***plain specification are supported. Links to external resources are not supported.
-- File paths are resolved relative to the location of the ***plain specification file.
+- Only links to files in the same folder (and its subfolders) as the ∗∗∗plain specification are supported. Links to external resources are not supported.
+- File paths are resolved relative to the location of the ∗∗∗plain specification file.
 - All types are supported, except binary files.

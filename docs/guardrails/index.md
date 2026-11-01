@@ -1,9 +1,9 @@
 ---
-title: Language guide
-description: A comprehensive guide to the ***plain language.
+title: The Guardrails
+description: A comprehensive guide for ***plain.
 ---
 
-This section is a comprehensive guide to the ∗∗∗plain language.
+This section is a comprehensive guide for ∗∗∗plain.
 
 ## Contents
 

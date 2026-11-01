@@ -5,7 +5,7 @@ title: Predefined Concepts
 
 # Predefined Concepts
 
-In addition to concepts you define yourself, ***plain provides a set of predefined concepts that are commonly used throughout specifications. These concepts represent core elements of the specification and code generation process.
+In addition to concepts you define yourself, ∗∗∗plain provides a set of predefined concepts that are commonly used throughout specifications. These concepts represent core elements of the specification and code generation process.
 
 **Usage Notes:**
 - These predefined concepts are available in all specifications without needing to be defined

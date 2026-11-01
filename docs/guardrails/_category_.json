@@ -1,0 +1,8 @@
+{
+  "label": "Guardrails",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "guardrails/index"
+  }
+}

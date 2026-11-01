@@ -18,7 +18,7 @@ Concepts are the [building blocks of ***plain specifications](/whitepapers/on-th
   - Examples: `:App:`, `:Tasks:`, `:ListOfUsers:`, `:CLI:`.
 - Concepts can reference other concepts in their definitions
 
-In addition to concepts you define yourself, ***plain provides a set of [predefined concepts](./predefined-concepts) that are commonly used throughout specifications.
+In addition to concepts you define yourself, ∗∗∗plain provides a set of [predefined concepts](./predefined-concepts) that are commonly used throughout specifications.
 
 ## Example Usage
 
