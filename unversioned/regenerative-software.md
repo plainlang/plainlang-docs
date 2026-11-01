@@ -24,7 +24,19 @@ For this to work, what we learn must survive when the code is replaced. The syst
 This requires clear boundaries so individual parts can be replaced safely. Fowler calls the principle [“durability through disposability”](https://chadfowler.com/regenerative-software/3majnyfydzs2y/): a system lasts because its implementations can be renewed. Its knowledge keeps growing, while its code can be rebuilt to reflect that knowledge.
 
 
-## How ∗∗∗plain fits 
+## How ∗∗∗plain fits
+
+Regeneration only works if the durable system knowledge is written down precisely enough to regenerate from and clearly enough to test against. Natural language on its own is neither. ∗∗∗plain puts guardrails on it: every concept must be defined before it is used, every functional spec must be small enough to regenerate reliably, and every decision about how the software is built must be stated as a constraint the agent has to follow. The guardrails work in both directions. They limit what a specification can say, and the specification in turn limits what the coding agent can produce.
+
+Each kind of durable knowledge has its place in a `.plain` file:
+
+| Durable knowledge | In ∗∗∗plain |
+| --- | --- |
+| What the software must do | [Functional specs](/docs/guardrails/functional-specs), built on [definitions](/docs/guardrails/definitions) that fix the meaning of every concept they use |
+| Tests any implementation must pass | [Acceptance tests](/docs/guardrails/acceptance-tests) written by the author, and conformance tests generated from every functional spec under the rules in [test reqs](/docs/guardrails/test-reqs) |
+| Decisions about how the system is shaped | [Implementation reqs](/docs/guardrails/implementation-reqs), which play the role of architecture decision records |
+
+The [toolkit](/toolkit) runs the loop. plain-forge captures requirements from a conversation with a coding agent and keeps the specification accurate as the software evolves. pyro regenerates the implementation and its conformance tests from the specification, so a change in understanding becomes a change to the spec, never a patch to generated code.
 
 ## Further reading
 
