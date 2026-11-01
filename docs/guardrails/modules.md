@@ -75,7 +75,7 @@ Use `requires:` when your specification depends on functionality implemented in 
 
 The `exported_concepts:` section declares which concepts from the current module are made available to other modules.
 
-This is useful because concepts in ***plain must be defined before they are used. By exporting concepts, one module can provide shared concept definitions to the next module without introducing a separate third file just to hold shared definitions.
+This is useful because concepts in ∗∗∗plain must be defined before they are used. By exporting concepts, one module can provide shared concept definitions to the next module without introducing a separate third file just to hold shared definitions.
 
 **Example:**
 ```yaml

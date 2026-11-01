@@ -40,8 +40,8 @@ posthog.init(${JSON.stringify(posthogKey)}, {
   : [];
 
 const config: Config = {
-  title: '∗∗∗plain, the language of spec-driven development',
-  tagline: '∗∗∗plain is a specification language that combines the efficiency of natural language with the control and precision of code.',
+  title: '∗∗∗plain, language guardrails for regenerative software',
+  tagline: '∗∗∗plain puts guardrails on the natural language that describes durable system knowledge. so that software can be safely and reliably regenerated.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

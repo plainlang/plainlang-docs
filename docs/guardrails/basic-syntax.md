@@ -5,11 +5,11 @@ title: Basic Syntax
 
 # Basic Syntax
 
-## About ***plain programming language
+## About ∗∗∗plain
 
-***plain is a specification language designed for writing software requirements in a clear, structured format.
+∗∗∗plain is a set of guardrails on the natural language used to describe durable system knowledge of software systems.
 
-Here's an example of a "hello, world" program in ***plain.
+Here's an example of a "hello, world" program in ∗∗∗plain.
 
 ```plain
 ***implementation reqs***
@@ -68,7 +68,7 @@ See [Definitions](./definitions) for more information.
 
 The `***implementation reqs***` specification is a list of instructions that steer software code implementation and provide details of execution environment.
 
-Here's an example of a simple instruction specifying only that the ***plain specification should be rendered to Python software code.
+Here's an example of a simple instruction specifying only that the ∗∗∗plain specification should be rendered to Python software code.
 
 ```plain
 - :Implementation: should be in Python.

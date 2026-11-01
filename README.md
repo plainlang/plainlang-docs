@@ -30,7 +30,7 @@ This command generates static content into the `build` directory and can be serv
 
 ## Content layout and versioning
 
-- `docs/` is the **language documentation** (the language guide). It is versioned with
+- `docs/` is the **∗∗∗plain documentation**. It is versioned with
   [Docusaurus docs versioning](https://docusaurus.io/docs/versioning) and served under `/docs/`.
 - `unversioned/` holds content that follows the site rather than the language: the toolkit page
   (`/toolkit`) and the whitepapers (`/whitepapers/...`). It is a second docs plugin instance and is
@@ -62,7 +62,7 @@ records the version in `versions.json`. From then on `docs/` is the in-progress 
 
 Keep the number of retained versions small; each one adds build time and has to be maintained
 separately. Links inside `docs/` should be relative (`./definitions/concept-notation`) rather than
-absolute (`/docs/language-guide/...`) so they stay correct inside a snapshot. `editCurrentVersion`
+absolute (`/docs/guardrails/...`) so they stay correct inside a snapshot. `editCurrentVersion`
 is on, so the "Edit this page" link always points at `docs/`.
 
 ## Analytics
