@@ -17,7 +17,7 @@ In addition to concepts you define yourself, ∗∗∗plain provides a set of pr
 
 - **`:plainDefinitions:`** - The definitions and descriptions of the concepts that are important for the system's functionality. This corresponds to the content in the `***definitions***` section.
 
-- **`:plainImplementationReqs:`** - The implementation requirements of the system that describe the system's behavior and constraints but do not describe the system's functionality. This corresponds to the content in the `***implementation reqs***` section.
+- **`:plainImplementationReqs:`** - The requirements that constrain how the system is implemented, such as language, framework, architecture, and coding rules. They do not describe what the system does. This corresponds to the content in the `***implementation reqs***` section.
 
 - **`:plainFunctionality:`** - The functionalities of the system that are or should be implemented in the code. This corresponds to the content in the `***functional specs***` section.
 

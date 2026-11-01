@@ -36,7 +36,6 @@ Each section appears at most once per file, and all sections are optional — wh
 
 Write sections in the canonical order given above. Definitions come first because every concept must be defined before it is referenced. Functional specs come last because they are rendered incrementally and their nested acceptance tests close the file.
 
-Functional specs must reside in leaf sections while other specifications can be placed also in non-leaf sections. Specifications in non-leaf sections apply not just to the section itself but to all of its subsections.
 
 ### Section Ownership
 
@@ -60,7 +59,7 @@ Here's an example of a simple definition.
 - :App: implements a task manager application.
 ```
 
-In this case, the concept name is `:App:`. Concepts are important for refering to definitions in the rest of the specification.
+In this case, the concept name is `:App:`. Concepts are important for referring to definitions in the rest of the specification.
 
 See [Definitions](./definitions) for more information.
 

@@ -5,7 +5,7 @@ title: Functional Specs
 
 # Functional Specs
 
-The `***functional specs***` section describes what the functionalities of the software. Each bullet point represents a functionality that will be implemented.
+The `***functional specs***` section describes what are the functionalities of the software. Each bullet point represents a functionality that will be implemented.
 
 **Key Points:**
 - Each bullet point should describe a single piece of functionality

@@ -146,7 +146,7 @@ const config: Config = {
         {
           to: '/whitepapers',
           position: 'right',
-          label: 'white papers',
+          label: 'whitepapers',
         },
         {
           href: 'https://github.com/plainlang',

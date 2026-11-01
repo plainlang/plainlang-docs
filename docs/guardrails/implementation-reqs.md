@@ -32,5 +32,5 @@ The implementation reqs section specifies non-functional requirements about how 
 
 - :MainExecutableFile: of :App: should be called "hello_world.py".
 
-- :Implementation: should include :Unittests: using Unittest framework!
+- :Implementation: should include :UnitTests: using Unittest framework!
 ```

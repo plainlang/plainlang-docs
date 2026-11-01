@@ -13,7 +13,7 @@ Here's an example of a simple definiton.
 - :App: implements a task manager application.
 ```
 
-In this case, the concept name is `:App:`. Concepts are important for refering to definitions in the rest of the specification.
+In this case, the concept name is `:App:`. Concepts are important for referring to definitions in the rest of the specification.
 
 **Key Points:**
 - Define all concepts before using them in other sections
