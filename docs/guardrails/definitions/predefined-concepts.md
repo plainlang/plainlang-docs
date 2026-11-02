@@ -31,13 +31,13 @@ In addition to concepts you define yourself, ∗∗∗plain provides a set of pr
 
 - **`:UnitTests:`** - The unit tests that evaluate individual functionalities of the `:plainImplementationCode:`. They are automatically generated alongside the implementation code if technology used to implement unittests is provided in `implementation reqs` specification section.
 
-- **`:ConformanceTests:`** - The conformance tests that evaluate the `:plainImplementationCode:` and its conformance to `:plainFunctionality:` specifications. They are automatically generated from the specs if technology and approach used to implement conformance test is provided in `test reqs` specification section.
+- **`:ConformanceTests:`** - The conformance tests that evaluate the `:plainImplementationCode:` and its conformance to `:plainFunctionality:` specifications. They are generated from the conformance scenarios of the test plain files, one test per scenario, if technology and approach used to implement conformance test is provided in `test reqs` specification section.
 
 ## Acceptance Testing Concepts
 
-- **`:AcceptanceTest:`** - A single acceptance test. The text of `:AcceptanceTest:` provides specific instructions on how some aspect of `:plainImplementationCode:` must be verified to confirm it conforms to the specifications. The technology used to implement acceptance tests is provided in `test reqs` specification section.
+- **`:AcceptanceTest:`** - A single acceptance test, generated from one acceptance scenario of a [test plain file](../test-scenarios). The text of the scenario provides specific instructions on how some aspect of `:plainImplementationCode:` must be verified to confirm it conforms to the specifications. The technology used to implement acceptance tests is provided in `test reqs` specification section.
 
-- **`:AcceptanceTests:`** - A collection of `:AcceptanceTest:` instances that validate `:plainImplementationCode:`.
+- **`:AcceptanceTests:`** - A collection of `:AcceptanceTest:` instances that validate `:plainImplementationCode:`. They are the acceptance scenarios of the test plain files of the module.
 
 ## Example
 

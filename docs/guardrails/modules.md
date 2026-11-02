@@ -15,6 +15,8 @@ There are three kinds of modules:
 - A **requires module** is a root module that is used by another root module via the `requires` directive.
 - An **import module** provides shared content that other modules pull in via `import`: it contains only `***definitions***`, `***implementation reqs***`, and/or `***test reqs***` — never `***functional specs***` and never a `requires` directive.
 
+A fourth kind of `.plain` file is not a module. A **test plain file** holds the [test scenarios](./test-scenarios) of one functionality of a root module. Its frontmatter fields `module` and `func_id` bind it to that functionality, and it has none of the sections above. By convention it lives at `tests/<module>/<func-id>.plain`, with `tests/` next to the root module.
+
 ## YAML Frontmatter
 
 The frontmatter is enclosed between `---` markers and can contain:

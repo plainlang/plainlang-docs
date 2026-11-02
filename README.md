@@ -38,27 +38,25 @@ This command generates static content into the `build` directory and can be serv
 
 The version number is the version of the ***plain language, not of plain-forge or pyro.
 
-Right now there is a single version, **0.3**, which is the `current` version in `docs/`; no snapshot
-has been cut, so `versioned_docs/` does not exist yet. The navbar shows the label from the
-`versions.current` entry in `docusaurus.config.ts`.
+There are two versions. **0.4** is the `current` version in `docs/` and is served at `/docs/`.
+**0.3** is frozen in `versioned_docs/version-0.3/` and is served at `/docs/0.3/`. The navbar shows
+the label from the `versions.current` entry in `docusaurus.config.ts`.
 
 ### Cutting a new version
 
-When work on the next language version (say 0.4) starts and the 0.3 docs must stay reachable:
+When work on the next language version (say 0.5) starts and the 0.4 docs must stay reachable:
 
 ```bash
-yarn docusaurus docs:version 0.3
+yarn docusaurus docs:version 0.4
 ```
 
-This copies `docs/` into `versioned_docs/version-0.3/`, the sidebar into `versioned_sidebars/`, and
-records the version in `versions.json`. From then on `docs/` is the in-progress version. In
-`docusaurus.config.ts`:
+This copies `docs/` into `versioned_docs/version-0.4/`, the sidebar into `versioned_sidebars/`, and
+records the version in `versions.json`. From then on `docs/` holds the next version. In
+`docusaurus.config.ts`, change the `versions.current` label to `0.5`.
 
-1. Set `lastVersion: '0.3'` so `/docs/` keeps serving the released language. The in-progress docs
-   are served at `/docs/next/` with an "unreleased" banner.
-2. Change `versions.current` to `{label: '0.4', path: 'next'}` (or leave the label as `Next`).
-3. When 0.4 is released, run `yarn docusaurus docs:version 0.4`, set `lastVersion: '0.4'`, and
-   0.3 moves to `/docs/0.3/`.
+To serve the next version separately while it is still in progress, set `lastVersion: '0.4'` and
+`versions.current` to `{label: '0.5', path: 'next'}`. `/docs/` then keeps serving 0.4 and the
+in-progress docs are at `/docs/next/` with an "unreleased" banner.
 
 Keep the number of retained versions small; each one adds build time and has to be maintained
 separately. Links inside `docs/` should be relative (`./definitions/concept-notation`) rather than

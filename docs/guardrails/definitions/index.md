@@ -44,7 +44,7 @@ While providing definitions, you should adhere to the following 4 rules:
 
 - Every definition must start with the name of the concept you are defining.
 - Concept names must be globally unique (meaning, you cannot provide two definitions with the same concept name).
-- When referencing concepts in ***test reqs***, ***functional specs***, ***implementation reqs*** and ***acceptance tests***, the concept name must exist in the ***definitions*** section.
+- When referencing concepts in ***test reqs***, ***functional specs***, ***implementation reqs***, ***conformance tests*** and ***acceptance tests***, the concept name must exist in the ***definitions*** section.
 - Imported modules may provide additional concept definitions
 
 ### Examples 
