@@ -18,12 +18,13 @@ Here's an example of a "hello, world" program in ∗∗∗plain.
 
 ***functional specs***
 
-- Display "hello, world"
+# display-hello-world
+The text "hello, world" is displayed.
 ```
 
 ## `.plain` File Structure
 
-A `.plain` file is one [module](./modules). It consists of an optional [YAML frontmatter section](./modules#yaml-frontmatter) followed by several standardized sections marked with `***section name***` headers.
+A `.plain` file is either a specification file or a test plain file. A specification file is one [module](./modules): an optional [YAML frontmatter section](./modules#yaml-frontmatter) followed by several standardized sections marked with `***section name***` headers. A [test plain file](./test-scenarios) holds the test scenarios of one functionality.
 
 There are four types of specification sections:
 
@@ -34,7 +35,7 @@ There are four types of specification sections:
 
 Each section appears at most once per file, and all sections are optional — which ones are allowed depends on the [module kind](./modules#module-kinds). To be renderable, a module needs at least one functional spec plus the implementation reqs to build it — its own or imported from another module.
 
-Write sections in the canonical order given above. Definitions come first because every concept must be defined before it is referenced. Functional specs come last because they are rendered incrementally and their nested acceptance tests close the file.
+Write sections in the canonical order given above. Definitions come first because every concept must be defined before it is referenced. Functional specs come last because they are rendered incrementally.
 
 
 ### Section Ownership
@@ -47,7 +48,7 @@ Each kind of fact is read **only from its owning section** — a requirement pla
 | HOW the software is built — tech stack, architecture, coding standards — and everything about `:UnitTests:` | `***implementation reqs***` |
 | Everything about `:ConformanceTests:` — framework, run command, mocking and network policy | `***test reqs***` |
 | WHAT the software does — observable, language-agnostic behavior | `***functional specs***` |
-| End-to-end workflow verification of one functional spec | nested `***acceptance tests***` |
+| Test scenarios of one functionality, conformance and acceptance | its [test plain file](./test-scenarios) |
 
 ## Definitions
 
@@ -93,32 +94,39 @@ See [Test Reqs](./test-reqs) for more information.
 
 ## Functional Specs
 
-The `***functional specs***` specification provides a description of functionality that should be rendered to software code. The descriptions should be provided in natural language as a markdown list.
+The `***functional specs***` specification provides a description of functionality that should be rendered to software code. Each functionality starts with a `# func-id` heading, followed by its description in natural language.
 
 Here's an example of a simple description of the functionality of the "hello, world" application.
 
 ```plain
-- Display "hello, world"
+# display-hello-world
+The text "hello, world" is displayed.
 ```
 
 See [Functional Specs](./functional-specs) for more information.
 
-## Acceptance Tests
+## Test Scenarios
 
-Acceptance tests can be used to further refine the functional spec and especially to incorporate constraints on the implementation.
+Test scenarios never go in the `.plain` file that holds the functional specs. A test plain file holds the scenarios of one functionality: the `***conformance tests***` section should include core tests of the functionality, while the `***acceptance tests***` section should include edge cases and other learnings from production use of software.
 
-Acceptance tests are specified with a keyword `***acceptance tests***` as a subsection within `***functional specs***` section. Each acceptance tests must be an item in a list. Note that `***acceptance tests***` is never a top-level section — it appears only nested under a single functional spec.
-
-Here's an example of a "Hello, World" application with one acceptance test.
+Here's the test plain file of the "hello, world" application.
 
 ```plain
-***functional specs***
+---
+module: hello_world
+func_id: display-hello-world
+---
 
-- Display "hello, world"
+***conformance tests***
 
-  ***acceptance tests***
+# prints-hello-world
+Running the application prints "hello, world".
+  - The application exits with status code 0.
 
-  - :App: shouldn't show logging output in the console output (neither in stdout nor stderr).
+***acceptance tests***
+
+# no-logging-output
+Running the application prints nothing to the console but the line "hello, world", neither on stdout nor on stderr.
 ```
 
-See [Acceptance Tests](./acceptance-tests) for more information.
+See [Test Scenarios](./test-scenarios) for more information.

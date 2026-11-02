@@ -7,20 +7,29 @@ title: Glossary
 
 This page defines key terms used in ∗∗∗plain and serves as a quick reference while reading the ∗∗∗plain documentation.
 
+<span id="acceptance-scenario"></span>
+**Acceptance scenario** is a scenario in the `***acceptance tests***` section of a test plain file. It covers an edge case of the functionality, or something learned from running the software in production: invalid parameters, wrong or missing authentication, missing data.
+
 <span id="acceptance-test"></span>
-**Acceptance test** is a specific, observable check written by developer that defines how a particular aspect of functionality should be tested and validated.
+**Acceptance test** is generated test code that implements one acceptance scenario. It is rendered after the conformance tests of its functionality pass.
 
 <span id="concept"></span>
 **Concept** is a domain entity, artifact, or shared reference that other requirements can point to. In ∗∗∗plain the concepts should be expressed using [:Concept: notation](./definitions/concept-notation).
 
+<span id="conformance-scenario"></span>
+**Conformance scenario** is a scenario in the `***conformance tests***` section of a test plain file. It is a core test of the functionality: a check that the functionality is properly implemented, on the main path, with valid parameters, the expected caller and the data present.
+
 <span id="conformance-tests"></span>
-**Conformance tests** are automatically generated from the specifications. They check whether the implementation matches the specification.
+**Conformance tests** are generated from the conformance scenarios of a functionality, one test per scenario. They check whether the implementation matches the specification. A functionality is considered regenerated only when all of its test scenarios pass.
 
 <span id="definitions"></span>
 **Definitions** declare named concepts that the rest of the specification can refer to. Definitions are the shared domain model and vocabulary for the specification.
 
 <span id="durable-system-knowledge"></span>
-**Durable system knowledge** is everything about a software system that must survive so that the system can be safely rebuilt: the specifications that state what the software must do, the tests that any implementation must pass, and the decisions that define how the system is shaped. It is what a [regenerative software](/regenerative-software) system is regenerated from. In ∗∗∗plain it is captured in functional specs, acceptance tests, and implementation reqs.
+**Durable system knowledge** is everything about a software system that must survive so that the system can be safely rebuilt: the specifications that state what the software must do, the tests that any implementation must pass, and the decisions that define how the system is shaped. It is what a [regenerative software](/regenerative-software) system is regenerated from. In ∗∗∗plain it is captured in functional specs, test scenarios, and implementation reqs.
+
+<span id="func-id"></span>
+**Func-id** is the name of one functionality. It is written as a `# func-id` heading in the `***functional specs***` section: lowercase letters, digits and hyphens, unique in the module. Where the module is needed it is written as `<module>:<func-id>`. A func-id does not have to describe the functionality, and it stays the same for as long as the functionality exists.
 
 <span id="functional-specs"></span>
 **Functional specs** describe what the software must do. These are the behavioral requirements of the system.
@@ -31,8 +40,14 @@ This page defines key terms used in ∗∗∗plain and serves as a quick referen
 <span id="renderer"></span>
 **Renderer** is a tool that creates working software from a ∗∗∗plain specification.
 
+<span id="scenario"></span>
+**Scenario** is one test case written as text in a test plain file. It starts with a `# scenario-id` heading and continues with free text that says what is done and what result is expected. Scenarios are written by the developer or by a coding agent. The renderer never writes them.
+
+<span id="test-plain-file"></span>
+**Test plain file** is a `.plain` file that holds the scenarios of one functionality. The frontmatter fields `module` and `func_id` bind it to that functionality. It has a `***conformance tests***` section and an `***acceptance tests***` section. By convention it lives at `tests/<module>/<func-id>.plain`.
+
 <span id="test-reqs"></span>
-**Test reqs** describe how conformance tests should be generated, structured, and executed. These are testing constraints for the spec-compliance test suite, not requirements for the implementation code itself.
+**Test reqs** describe how conformance tests should be generated, structured, and executed. What the tests check comes from the scenarios, not from here. These are testing constraints for the spec-compliance test suite, not requirements for the implementation code itself.
 
 <span id="unittests"></span>
 **Unit tests** are automatically generated by the renderer to verify individual parts of the implementation code. These are the fine-grained tests for functions, classes, or modules.

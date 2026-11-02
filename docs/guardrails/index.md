@@ -12,9 +12,9 @@ A guardrail is a rule that limits what a specification can say, so that what it 
 - [Basic syntax](./basic-syntax) - a `.plain` file has fixed sections, and each kind of knowledge belongs in exactly one of them
 - [Definitions](./definitions) - every concept is defined before it is used, and every concept name is unique
 - [Implementation reqs](./implementation-reqs) - decisions about how the software is built are stated as constraints the agent must follow
-- [Test reqs](./test-reqs) - how conformance tests are built and run is stated, not left to the agent
+- [Test reqs](./test-reqs) - how conformance tests are built and run is stated, not what the tests check
 - [Functional specs](./functional-specs) - each one describes a single behavior and is small enough to regenerate reliably
-- [Acceptance tests](./acceptance-tests) - a functional spec can carry its own checks, which any implementation must pass
+- [Test scenarios](./test-scenarios) - every functionality carries its own test scenarios, and the renderer generates exactly those tests
 - [Modules](./modules) - a specification can be split into several `.plain` files that are rendered together, and each kind of module may contain only certain sections
 
 ## Supporting pages

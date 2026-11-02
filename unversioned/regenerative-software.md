@@ -33,7 +33,7 @@ Each kind of durable knowledge has its place in a `.plain` file:
 | Durable knowledge | In ∗∗∗plain |
 | --- | --- |
 | What the software must do | [Functional specs](/docs/guardrails/functional-specs), built on [definitions](/docs/guardrails/definitions) that fix the meaning of every concept they use |
-| Tests any implementation must pass | [Acceptance tests](/docs/guardrails/acceptance-tests) written by the author, and conformance tests generated from every functional spec under the rules in [test reqs](/docs/guardrails/test-reqs) |
+| Tests any implementation must pass | [Test scenarios](/docs/guardrails/test-scenarios) written by the author, one file per functionality, and the conformance tests generated from them under the rules in [test reqs](/docs/guardrails/test-reqs) |
 | Decisions about how the system is shaped | [Implementation reqs](/docs/guardrails/implementation-reqs), which play the role of architecture decision records |
 
 The [toolkit](/toolkit) runs the loop. plain-forge captures requirements from a conversation with a coding agent and keeps the specification accurate as the software evolves. pyro regenerates the implementation and its conformance tests from the specification, so a change in understanding becomes a change to the spec, never a patch to generated code.

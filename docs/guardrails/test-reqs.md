@@ -5,12 +5,12 @@ title: Test Reqs
 
 # Test Reqs
 
-The test reqs section specifies requirements for conformance testing. This section describes how the generated code should be tested, including test frameworks, execution methods, and testing constraints. 
+The test reqs section specifies how conformance tests are written and run: the test framework, the command that runs them, and any testing constraints. It does not specify what the tests check. That comes from the scenarios in each functionality's [test plain file](./test-scenarios).
 
 **Note that `***test reqs***` are only used when writing and fixing conformance tests and do not have an impact on writing and fixing unit tests.**
 
 **Key Points:**
-- Specifies how conformance tests should be structured and executed
+- Specifies how conformance tests should be structured and executed, not what they check
 - Defines the testing framework and conventions
 - Often imported from template modules
 - Provides context for test execution environment

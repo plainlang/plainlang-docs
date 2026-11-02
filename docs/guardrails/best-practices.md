@@ -8,12 +8,14 @@ title: Best Practices
 1. **Start with Imports**: Import relevant templates before defining your own concepts
 2. **Define Before Use**: Always define concepts in `***definitions***` before using them
 3. **Be Specific**: Write clear, testable requirements in functional specs
-4. **Use Acceptance Tests**: Add acceptance tests for requirements that need verification
+4. **Write Test Scenarios**: Give every functionality a test plain file with at least one conformance scenario
 5. **Leverage Templates**: Use the standard template library for common patterns
 6. **Keep It Simple**: ∗∗∗plain specifications should be readable by both humans and AI
 7. **Reference Concepts Consistently**: Use [concept notation](./definitions/concept-notation) to disambiguate key concepts
 
 ## Complete Example
+
+Here's `task-manager.plain`, the specification of a task manager application.
 
 ```plain
 ---
@@ -40,13 +42,39 @@ import:
 
 ***functional specs***
 
-- :User: should be able to add :Task:. Only valid :Task: items can be added.
+# add-task
+A :User: can add a :Task:. Only valid :Task: items are added.
 
-- :User: should be able to delete :Task:
+# delete-task
+A :User: can delete a :Task:.
 
-- :User: should be able to edit :Task:
+# edit-task
+A :User: can edit a :Task:.
 
-- :User: should be able to mark :Task: as completed.
+# complete-task
+A :User: can mark a :Task: as completed.
 
-- Show :TaskList:
+# show-task-list
+The :TaskList: is displayed.
+```
+
+Every functionality carries its own test plain file. Here's `tests/task-manager/add-task.plain`, the scenarios of `add-task`.
+
+```plain
+---
+module: task-manager
+func_id: add-task
+---
+
+***conformance tests***
+
+# add-task-with-name
+A :User: adds a :Task: named "Buy milk".
+  - The :Task: appears in :TaskList: with the name "Buy milk".
+
+***acceptance tests***
+
+# add-task-without-name
+A :User: adds a :Task: with an empty name.
+  - The :Task: is not added and :TaskList: is unchanged.
 ```

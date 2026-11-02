@@ -74,16 +74,17 @@ const config: Config = {
           editUrl: 'https://github.com/plainlang/plainlang-docs/edit/main/',
           // Edit links on frozen versions point at the live docs, not the snapshot.
           editCurrentVersion: true,
-          // Language versioning. `docs/` is the "current" version. Until a
-          // snapshot is cut it is also the released one, labelled 0.3 and
-          // served at /docs/. To freeze it when work on the next version
-          // starts: `yarn docusaurus docs:version 0.3` (see README.md).
+          // Language versioning. `docs/` is the "current" version, 0.4, and is
+          // served at /docs/. The frozen 0.3 snapshot lives in
+          // `versioned_docs/` and is served at /docs/0.3/. To freeze 0.4 when
+          // work on the next version starts:
+          // `yarn docusaurus docs:version 0.4` (see README.md).
           lastVersion: 'current',
           versions: {
             current: {
-              label: '0.3',
+              label: '0.4',
               path: '',
-              // Show "Version: 0.3" on doc pages even with a single version.
+              // Show "Version: 0.4" on doc pages.
               badge: true,
             },
           },
@@ -107,6 +108,20 @@ const config: Config = {
         routeBasePath: '/',
         sidebarPath: './sidebars-unversioned.ts',
         editUrl: 'https://github.com/plainlang/plainlang-docs/edit/main/',
+      },
+    ],
+    [
+      // Pages renamed in a language version keep their old address working.
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            // Renamed in 0.4: acceptance tests became one of the two kinds of
+            // scenario a test plain file holds.
+            from: '/docs/guardrails/acceptance-tests',
+            to: '/docs/guardrails/test-scenarios',
+          },
+        ],
       },
     ],
   ],
