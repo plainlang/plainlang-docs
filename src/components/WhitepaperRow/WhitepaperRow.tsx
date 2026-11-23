@@ -11,7 +11,12 @@ type Props = {
 
 export default function WhitepaperRow({number, title, excerpt, topics, readingTime, href}: Props) {
   return (
-    <a href={href} className={styles.row}>
+    <a
+      href={href}
+      className={styles.row}
+      data-track="whitepaper_opened"
+      data-track-label={title}
+      data-track-number={number}>
       <div className={styles.left}>
         <span className={styles.number}>{number}</span>
       </div>

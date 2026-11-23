@@ -7,7 +7,9 @@ import styles from './CookieConsent.module.css';
  * Cookie consent banner gating PostHog analytics.
  *
  * PostHog starts opted out (see docusaurus.config.ts) and captures nothing
- * until this component calls `opt_in_capturing()`. The choice is stored under
+ * until this component calls `opt_in_capturing()`. The banner is only shown
+ * where consent is required (EU/EEA, UK, Switzerland); elsewhere analytics are
+ * enabled without asking, see consentRequired(). The choice is stored under
  * STORAGE_KEY, which is strictly necessary and needs no consent.
  *
  * Dispatching `new Event(OPEN_EVENT)` on `window` reopens the banner in the
@@ -32,6 +34,7 @@ declare global {
     posthog?: {
       opt_in_capturing: (options?: {captureEventName?: string | false | null}) => void;
       opt_out_capturing: () => void;
+      capture: (event: string, properties?: Record<string, unknown>) => void;
     };
   }
 }
@@ -43,6 +46,14 @@ function readConsent(): Consent | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Set on <html> by the Cloudflare Pages middleware (functions/_middleware.js)
+ * from the visitor's country. Missing (local dev, unknown country) means ask.
+ */
+function consentRequired(): boolean {
+  return document.documentElement.dataset.consentRegion !== 'not-required';
 }
 
 function applyConsent(value: Consent): void {
@@ -67,7 +78,11 @@ export default function CookieConsent(): ReactNode {
   useEffect(() => {
     const stored = readConsent();
     if (stored) applyConsent(stored);
-    else setState('open');
+    else if (consentRequired()) setState('open');
+    // Outside the EU/EEA, UK and Switzerland analytics run without asking.
+    // Not stored, so a visitor who later travels to the EU gets the banner.
+    // Anyone can still decline via the cookie policy page.
+    else applyConsent('accepted');
     const onOpen = () => {
       openPreferences();
       setState('open');
