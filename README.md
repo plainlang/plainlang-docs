@@ -67,7 +67,21 @@ is on, so the "Edit this page" link always points at `docs/`.
 
 The site uses [PostHog](https://eu.posthog.com/) (EU Cloud) for analytics. The snippet is injected from `docusaurus.config.ts` only when the `POSTHOG_KEY` environment variable is set at build time, so `yarn start` and builds without the variable ship no analytics.
 
-PostHog starts opted out and stores nothing until the visitor accepts the cookie banner (`src/components/CookieConsent`). The choice is kept in `localStorage` and can be changed with the button on the cookie policy page, `src/pages/cookie-policy.mdx` (served at `/cookie-policy`), which reopens the banner in its preferences view.
+PostHog starts opted out and stores nothing until the visitor accepts the cookie banner (`src/components/CookieConsent`). The banner is only shown to visitors in the EU/EEA, UK and Switzerland: a Cloudflare Pages Function (`functions/_middleware.js`) adds `data-consent-region` to every HTML page from Cloudflare's country lookup, and visitors elsewhere get analytics without the banner. Without that attribute (local dev, unknown country) the banner is always shown. `static/_routes.json` keeps the function off static assets. The choice is kept in `localStorage` and can be changed with the button on the cookie policy page, `src/pages/cookie-policy.mdx` (served at `/cookie-policy`), which reopens the banner in its preferences view.
+
+On top of PostHog's automatic pageviews and clicks, `src/clientModules/analytics.ts` sends these custom events:
+
+| Event | Clicked |
+|---|---|
+| `getting_started_clicked`, `guardrails_clicked`, `regenerative_software_clicked`, `whitepapers_clicked`, `toolkit_clicked` | That item in the docs sidebar or navbar (`NAV_EVENTS`) |
+| `home_get_started_clicked` | The homepage "GET STARTED" button |
+| `whitepaper_opened` | A white paper on the white papers page |
+| `outbound_link_clicked` | A link to another site |
+| `file_downloaded` | A download link (adds `file`) |
+| `code_copied` | A code block's copy button (adds `language`) |
+| `search_opened` | The search button or Cmd/Ctrl+K, `/` (adds `method`) |
+
+Every event has `label` (what was clicked), `url` (where it leads) and `location` (`navbar`, `sidebar`, `footer`, `content`, or a custom value such as `home_hero`), so all of them can be broken down the same way. To track another element, add `data-track="event_name"` to it; `data-track-label` and `data-track-location` override the defaults and any other `data-track-*` attribute becomes an extra property.
 
 `POSTHOG_KEY` is configured as a build environment variable in the Cloudflare Pages project. To test a production build locally:
 

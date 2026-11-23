@@ -23,7 +23,11 @@ export default function Home(): ReactNode {
             {pageTagline}
           </p>
           <div className={styles.ctaButtons}>
-            <a href="/docs/" className={styles.primaryButton}>
+            <a
+              href="/docs/"
+              className={styles.primaryButton}
+              data-track="home_get_started_clicked"
+              data-track-location="home_hero">
               GET STARTED
             </a>
             {/* <a href="#demo" className={styles.secondaryButton}>
